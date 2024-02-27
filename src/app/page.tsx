@@ -18,8 +18,6 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [captcha, setCaptcha] = useState<string | null>(null);
 
-  console.log(captcha);
-
   const onHandleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     if (!isValidPhoneNumber(phone) || message === "" || !captcha) {

@@ -13,8 +13,6 @@ export const POST = async (req: Request) => {
       to: receiver,
       subject,
       text: message,
-      //   subject: "hello world",
-      //   text: "it works!",
     });
     console.log(res);
 

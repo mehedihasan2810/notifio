@@ -20,8 +20,13 @@ export const POST = async (req: Request) => {
     );
     const recaptchaRes = await res.json();
 
+    console.log(recaptchaRes);
+
     if (!recaptchaRes.success) {
-      return NextResponse.json({ status: "error", sid: "" }, { status: 400 });
+      return NextResponse.json(
+        { status: "error", sid: recaptchaRes.error },
+        { status: 400 }
+      );
     }
 
     const msg = await client.messages.create({
@@ -38,6 +43,9 @@ export const POST = async (req: Request) => {
     );
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ status: "error", sid: "" }, { status: 400 });
+    return NextResponse.json(
+      { status: "error", sid: "server error" },
+      { status: 400 }
+    );
   }
 };
